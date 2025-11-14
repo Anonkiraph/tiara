@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ff9ac9, #ff7bb8, #ff9bdd);
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Moving gradient background */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Background scattered photos */
+.bg-photos {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-photo {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 18px;
+  opacity: 0.55;
+  animation: floatRandom 10s ease-in-out infinite;
+}
+
+@keyframes floatRandom {
+  0%,100% { transform: translateY(-12px) rotate(-4deg); }
+  50%     { transform: translateY(12px) rotate(4deg); }
+}
+
+/* Typewriter text */
+.animated-text {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-top: 40px;
+  transform: translateY(6px);
+  opacity: 0;
+  animation: revealText 1s ease .5s forwards;
+}
+
+.typewriter {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .12em solid rgba(255,255,255,0.8);
+  width: 0ch;
+  animation: typing 3.5s steps(24,end) 0.4s forwards, blink .7s step-end infinite 4s;
+}
+
+.tiara {
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 0 0 20px rgba(255,80,150,0.7);
+}
+
+@keyframes typing {
+  from { width: 0ch; }
+  to   { width: 22ch; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes revealText {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Heart */
+.love-container {
+  position: relative;
+  z-index: 3;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.heart {
+  width: 180px;
+  height: 180px;
+  background: #ff4f9a;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: pulse 2s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 180px;
+  height: 180px;
+  background: #ff4f9a;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.heart::before { top: -90px; left: 0; }
+.heart::after  { left: 90px; top: 0; }
+
+@keyframes pulse {
+  0%,100% { transform: rotate(-45deg) scale(1); }
+  50%     { transform: rotate(-45deg) scale(1.1); }
+}
